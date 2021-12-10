@@ -39,15 +39,15 @@
             <div class="field is-grouped">
 
             <% if total_cart_items %>
-              <%#= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+              <%= link_to cart_path(@cart), class:"navbar-item button is-success" do %>
               <span class="icon is-small">
                 <i class="fa fa-shopping-cart"></i>
               </span>
               <span style="color:#ffff">Cart
-                <%#= cart_count_over_one %>
+                <%= cart_count_over_one %>
                 </span>
-              <%# end %>
-            <% end %>
+              <% end %>
+            <% end %>&nbsp
             <% if user_signed_in? %>
               <%= link_to 'Sell', new_instrument_path, class: "navbar-item button is-info" %>
 
