@@ -15,7 +15,7 @@
 
     <div class="instrument border-light">
       <div class="instrument-thumb">
-      <%#= link_to image_tag(instrument.image_url(:thumb)), instrument %>
+      <%= link_to image_tag(instrument.image_url), instrument %>
       <% if instrument.condition? %>
         <div class="condition">
           <span class="tag is-dark"><%= instrument.condition %></span>
@@ -32,10 +32,10 @@
 
       <p class="f3 fw6 has-text-right pt2 price"><%= number_to_currency(instrument.price) %></p>
 
-      <%# if instrument_author(instrument) %>
+      <% if instrument_author(instrument) %>
          <%= link_to 'Edit', edit_instrument_path(instrument), class: "button is-small" %>
          <%= link_to 'Delete', instrument, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
-      <%# end %>
+      <% end %>
 
     </div>
   </div>
