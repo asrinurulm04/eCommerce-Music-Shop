@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_142929) do
+ActiveRecord::Schema.define(version: 2021_12_10_143657) do
 
   create_table "carts", charset: "utf8mb4", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 2021_12_10_142929) do
     t.integer "user_id"
   end
 
+  create_table "line_items", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "instrument_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity", default: 1
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["instrument_id"], name: "index_line_items_on_instrument_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -49,4 +59,6 @@ ActiveRecord::Schema.define(version: 2021_12_10_142929) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "instruments"
 end
